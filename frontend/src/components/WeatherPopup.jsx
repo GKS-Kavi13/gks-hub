@@ -17,7 +17,7 @@ const WeatherPopup = ({ onClose }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = `${API_URL}?q=${city}&units=metric&appid=538765188ac1bed686543c7e42efccad`;
+      const response = `${API_URL}?q=${city}&units=metric&appid=${API_KEY}`;
       const weatherdata = await axios.get(response);
       setWeather(weatherdata.data);
     } catch (err) {
