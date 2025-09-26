@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-ssr
+*.local
+
+frontend/.env
+backend/.env
+
+frontend/node_modules
+backend/node_modules
+
