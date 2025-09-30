@@ -20,7 +20,6 @@ const Register = ({ setUser }) => {
     try {
       const res = await axios.post(`${import.meta.env.VITE_API_URL}/users/register`, formData);
       localStorage.setItem("token", res.data.token);
-      console.log(res.data);
       setUser(res.data);
       navigate("/login");
     } catch (err) {

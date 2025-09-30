@@ -18,7 +18,6 @@ function App() {
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  console.log(user);
   useEffect(() => {
     const fetchUser = async () => {
       const token = localStorage.getItem("token");
