@@ -12,6 +12,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import NotFound from "./components/NotFound";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function App() {
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
@@ -22,7 +24,7 @@ function App() {
       const token = localStorage.getItem("token");
       if (token) {
         try {
-          const res = await axios.get("/api/users/me", {
+          const res = await axios.get(`${import.meta.env.VITE_API_URL}/users//me`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           setUser(res.data);
