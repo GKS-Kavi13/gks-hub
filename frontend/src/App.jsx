@@ -24,7 +24,8 @@ function App() {
       const token = localStorage.getItem("token");
       if (token) {
         try {
-          const res = await axios.get(`${import.meta.env.VITE_API_URL}/users//me`, {
+          const res = await axios.get(`${import.meta.env.VITE_API_URL}/users/me`, {
+          // const res = await axios.get(`api/users/me`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           setUser(res.data);
@@ -47,25 +48,30 @@ function App() {
   }
 
   return (
-    <Router>
+  <Router>
+    <div className="min-h-screen flex flex-col">
       <Navbar user={user} setUser={setUser} />
-      <Routes>
-        <Route path="/" element={<Home user={user} error={error} />} />
-        <Route
-          path="/login"
-          element={user ? <Navigate to="/" /> : <Login setUser={setUser} />}
-        />
-        <Route
-          path="/register"
-          element={user ? <Navigate to="/" /> : <Register setUser={setUser} />}
-        />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <footer className="text-sm text-gray-500 text-center">
-          © Designed & Developed by Kavi
-        </footer>
-    </Router>
-  );
+      <main className="flex-grow p-4">
+        <Routes>
+          <Route path="/" element={<Home user={user} error={error} />} />
+          <Route
+            path="/login"
+            element={user ? <Navigate to="/" /> : <Login setUser={setUser} />}
+          />
+          <Route
+            path="/register"
+            element={user ? <Navigate to="/" /> : <Register setUser={setUser} />}
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <footer className="text-sm text-gray-500 text-center p-4">
+        © Designed & Developed by Kavi
+      </footer>
+    </div>
+  </Router>
+);
+
 }
 
 export default App;

@@ -5,49 +5,55 @@ import WeatherPopup from "../components/WeatherPopup";
 
 const Home = ({ user, error }) => {
   const [showWeatherPopup, setShowWeatherPopup] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
+
   const isLoggedIn = !!user;
 
   return (
-    <div className="min-h-screen flex bg-gray-100">
-      {/* Sidebar only visible when logged in */}
-      {isLoggedIn && (
-        <Sidebar onWeatherClick={() => setShowWeatherPopup(true)} />
+    <div className="min-h-screen bg-gray-100 flex">
+      {/* Sidebar Toggle Button */}
+      {isLoggedIn && !showSidebar && (
+        <button
+          onClick={() => setShowSidebar(true)}
+          className="fixed top-4 left-4 z-40 bg-white border border-gray-300 p-2 rounded shadow hover:shadow-md"
+        >
+          ☰
+        </button>
+      )}
+
+      {/* Sidebar */}
+      {isLoggedIn && showSidebar && (
+        <Sidebar
+          onWeatherClick={() => setShowWeatherPopup(true)}
+          onClose={() => setShowSidebar(false)}
+        />
       )}
 
       {/* Main Content */}
-      <div className="flex flex-1 items-center justify-center p-4">
+      <div className="flex-1 flex items-center justify-center p-4">
         <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-lg text-center">
-          {/* Error Message */}
           {error && <p className="text-red-500 mb-4 text-sm">{error}</p>}
 
-          {/* Logged In */}
           {isLoggedIn ? (
             <>
               <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center justify-center gap-2">
                 <span>👋</span>
                 <span>Welcome, {user.username || "User"}</span>
               </h2>
-              <p className="text-gray-600">
-                Email: {user.email || "Not provided"}
-              </p>
+              <p className="text-gray-600">Email: {user.email || "Not provided"}</p>
             </>
           ) : (
-            // Not Logged In
             <>
-              <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center justify-center gap-2">
-                <span>👋</span>
-                <span>Welcome!</span>
-              </h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">Welcome!</h2>
               <p className="text-sm italic text-gray-700 mb-6">
                 Please log in or register
-                </p>
-
+              </p>
               <div className="flex flex-col space-y-4">
                 <Link
-                to="/login"
-                className="w-full bg-gradient-to-r from-green-500 to-blue-300 text-white p-3 rounded-md shadow-md hover:from-green-500 hover:to-blue-200 transition-all duration-300 font-medium"
+                  to="/login"
+                  className="w-full bg-gradient-to-r from-green-500 to-blue-300 text-white p-3 rounded-md shadow-md hover:from-green-600 hover:to-blue-400 transition-all duration-300 font-medium"
                 >
-                Login
+                  Login
                 </Link>
                 <Link
                   to="/register"

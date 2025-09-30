@@ -28,9 +28,9 @@ const Login = ({ setUser }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md border border-gray-200">
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
+    <div className="min-h-[550px] flex items-center justify-center bg-gray-100 overflow-x-hidden">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md border border-gray-200 max-w-full">
+        <h2 className="text-2xl font-bold mb-3 text-center text-gray-800">
           Login
         </h2>
         {error && <p className="text-red-500 mb-4 text-sm">{error}</p>}
@@ -64,7 +64,7 @@ const Login = ({ setUser }) => {
               required
             />
           </div>
-          <button className="w-full bg-gradient-to-r from-green-500 to-blue-500 text-white p-3 rounded-md shadow-md hover:from-green-600 hover:to-blue-600 transition-all duration-300 font-medium">
+          <button className="cursor-pointer w-full bg-gradient-to-r from-green-500 to-blue-500 text-white p-3 rounded-md shadow-md hover:from-green-600 hover:to-blue-600 transition-all duration-300 font-medium">
             Login
           </button>
         </form>
