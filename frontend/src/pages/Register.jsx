@@ -22,7 +22,7 @@ const Register = ({ setUser }) => {
       localStorage.setItem("token", res.data.token);
       console.log(res.data);
       setUser(res.data);
-      navigate("/");
+      navigate("/login");
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
     }

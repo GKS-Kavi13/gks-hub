@@ -62,7 +62,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <footer className="text-sm text-gray-500 text-center">
-          © Design by Kavi
+          © Designed & Developed by Kavi
         </footer>
     </Router>
   );
