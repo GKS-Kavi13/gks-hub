@@ -33,7 +33,7 @@ const WeatherPopup = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-opacity-40 z-50 flex items-center justify-center p-4 overflow-auto">
+    <div className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg relative">
         {/* Close Button */}
         <button
@@ -44,13 +44,12 @@ const WeatherPopup = ({ onClose }) => {
         </button>
 
         {/* Weather App UI */}
-        <div className=" w-full flex flex-col items-center justify-center bg-gradient-to-br from-blue-300 via-green-400 to-green-700
-">
-        <div className="bg-black/90 text-white rounded-lg shadow-lg p-8 max-w-md w-full">
-          <h1 className="text-2xl font-bold mb-4">Weather App</h1>
+        <div className=" w-full text-black flex flex-col items-center justify-center ">
+        <div className="  rounded-lg shadow-lg p-8 max-w-md w-full">
+          <h1 className="text-2xl text-black font-bold mb-4">Weather App</h1>
           <Search fetchWeather={fetchWeather} />
-          {loading && <p className="text-center mt-2">Loading...</p>}
-          {error && <p className="text-center mt-2 text-red-500">{error}</p>}
+          {loading && <p className="text-center mt-2 text-black">Loading...</p>}
+          {error && <p className="text-center mt-2 text-red-500 text-black">{error}</p>}
           {weather && <WeatherCard weather={weather} />}
         </div>
 </div>

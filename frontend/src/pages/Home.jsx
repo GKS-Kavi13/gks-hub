@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import WeatherPopup from "../components/WeatherPopup";
+import QuotePopup from "../components/QuotePopup";
 
 const Home = ({ user, error }) => {
   const [showWeatherPopup, setShowWeatherPopup] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
+  const [showQuotePopup, setShowQuotePopup] = useState(false);
 
   const isLoggedIn = !!user;
 
@@ -25,6 +27,7 @@ const Home = ({ user, error }) => {
       {isLoggedIn && showSidebar && (
         <Sidebar
           onWeatherClick={() => setShowWeatherPopup(true)}
+          onQuoteClick={() => setShowQuotePopup(true)}
           onClose={() => setShowSidebar(false)}
         />
       )}
@@ -68,9 +71,9 @@ const Home = ({ user, error }) => {
       </div>
 
       {/* Weather Popup */}
-      {showWeatherPopup && (
-        <WeatherPopup onClose={() => setShowWeatherPopup(false)} />
-      )}
+      {showWeatherPopup && <WeatherPopup onClose={() => setShowWeatherPopup(false)} />}
+      {showQuotePopup && <QuotePopup onClose={() => setShowQuotePopup(false)} />}
+    
     </div>
   );
 };
